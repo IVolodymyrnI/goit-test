@@ -1,4 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
+
 import { textStyles, Button, layerStyles } from "styles";
 
 export const theme = extendTheme({

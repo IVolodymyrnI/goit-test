@@ -1,5 +1,7 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
+
 import { FILTER } from "constants";
+
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 
 export const FilterByStatus = ({ props: { onClick, filter, isFetching } }) => {

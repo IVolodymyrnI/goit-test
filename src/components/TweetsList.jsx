@@ -1,5 +1,6 @@
 import { Flex, List, Text } from "@chakra-ui/react";
 import { Spinner } from "@chakra-ui/react";
+
 import { TweetCard } from "./TweetCard";
 
 export function TweetsList({ props: { users, isFetching, ...rest } }) {

@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+
 import { getUsers } from "services/usersApi";
 
 export const useGetUsers = ({ page, filter }) => {

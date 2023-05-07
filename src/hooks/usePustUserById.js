@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "react-query";
+
 import { putUserById } from "services/usersApi";
 
 export const usePutUserById = ({ page, filter }) => {

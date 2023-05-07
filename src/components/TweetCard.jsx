@@ -9,9 +9,10 @@ import {
   ListItem,
   Box,
 } from "@chakra-ui/react";
+
+import { decreaseNumber, increaseNumber } from "utils";
 import { PhotoFrame } from "components/CustomStyledComponents/PhotoFrame";
 import { CustomLine } from "components/CustomStyledComponents/CustomLine";
-import { decreaseNumber, increaseNumber } from "utils";
 import { ReactComponent as Logo } from "svg/logo.svg";
 
 export function TweetCard({ user, page, filter }) {

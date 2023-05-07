@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import { SharedLayout } from "layout/SharedLayout";
+
 import { Home, Tweets } from "pages";
+import { SharedLayout } from "layout/SharedLayout";
 
 function App() {
   return (

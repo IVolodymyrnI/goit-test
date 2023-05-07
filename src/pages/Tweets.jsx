@@ -1,11 +1,12 @@
-import { load, save } from "utils";
 import { useEffect, useRef, useState } from "react";
+import { Flex } from "@chakra-ui/react";
+
+import { useGetUsers } from "hooks";
+import { FILTER } from "constants";
 import { TweetsList } from "components/TweetsList";
 import { FilterByStatus } from "components/FilterByStatus";
 import { PaginationTweets } from "components/PaginationTweets";
-import { Flex } from "@chakra-ui/react";
-import { useGetUsers } from "hooks";
-import { FILTER } from "constants";
+import { load, save } from "utils";
 
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 

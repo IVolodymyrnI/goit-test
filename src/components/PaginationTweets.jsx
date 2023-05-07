@@ -1,4 +1,5 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
+
 import { PER_PAGE } from "constants";
 
 export const PaginationTweets = ({ props }) => {
