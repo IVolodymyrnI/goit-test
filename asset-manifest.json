@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/goit-test/static/js/main.4b8e8383.js",
+    "static/media/logo.svg": "/goit-test/static/media/logo.e917114d7945c04c85a8946a331d28b6.svg",
+    "index.html": "/goit-test/index.html",
+    "main.4b8e8383.js.map": "/goit-test/static/js/main.4b8e8383.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4b8e8383.js"
+  ]
+}
