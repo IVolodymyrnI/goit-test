@@ -61,7 +61,7 @@ export function TweetCard({ user, page, filter }) {
             <Logo />
           </Box>
           <Box
-            bgImage="url('/img/cardbgImage.png')"
+            bgImage="url('./img/cardbgImage.png')"
             width="308px"
             height="168px"
           />
