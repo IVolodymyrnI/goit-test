@@ -1,10 +1,10 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { FILTER } from "constants";
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 
 export const FilterByStatus = ({ props: { onClick, filter, isFetching } }) => {
   return (
-    <Box mb="36px">
+    <ButtonGroup mb="36px">
       <Button
         name={ALL}
         _hover={{ bg: "brand.active", transform: "scale(1.05)" }}
@@ -32,6 +32,6 @@ export const FilterByStatus = ({ props: { onClick, filter, isFetching } }) => {
       >
         Following
       </Button>
-    </Box>
+    </ButtonGroup>
   );
 };

@@ -9,7 +9,7 @@ import {
 export const SharedLayout = () => {
   return (
     <>
-      <Box p="36px" mb="36px" fontWeight="semibold" fontSize="xl">
+      <Box paddingX="36px" paddingY="30px" fontWeight="semibold" fontSize="xl">
         <Breadcrumb>
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink as={NavLink} _activeLink={{ color: "red" }} to="/">

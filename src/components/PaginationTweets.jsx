@@ -1,11 +1,11 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { PER_PAGE } from "constants";
 
 export const PaginationTweets = ({ props }) => {
   const { onPagination, page, users, isFetching } = props;
 
   return (
-    <Box>
+    <ButtonGroup>
       <Button
         name="prev"
         layerStyle="inactive"
@@ -24,6 +24,6 @@ export const PaginationTweets = ({ props }) => {
       >
         Next
       </Button>
-    </Box>
+    </ButtonGroup>
   );
 };
