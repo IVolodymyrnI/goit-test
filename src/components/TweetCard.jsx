@@ -75,10 +75,10 @@ export function TweetCard({ user, page, filter }) {
             <CustomLine />
           </Flex>
           <Text textStyle="cardText" mb="16px">
-            followers {followers}
+            followers {followers.toLocaleString()}
           </Text>
           <Text textStyle="cardText" mb="26px">
-            tweets {tweets}
+            tweets {tweets.toLocaleString()}
           </Text>
           <Button
             isLoading={isPutting}

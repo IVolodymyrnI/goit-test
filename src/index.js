@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter } from "react-router-dom";
 
 import { ChakraProvider } from "@chakra-ui/react";
-import App from "./App";
+import App from "./routes/routes";
 import { theme } from "styles/theme";
 
 const queryClient = new QueryClient({

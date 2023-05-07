@@ -10,7 +10,7 @@ import { load, save } from "utils";
 
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 
-export const Tweets = () => {
+const Tweets = () => {
   const [page, setPage] = useState(() => load("page") || 1);
   const [filter, setFilter] = useState(() => load("filter") || ALL);
   const { data: users = [], isFetching } = useGetUsers({ page, filter });
@@ -88,3 +88,5 @@ export const Tweets = () => {
     </Flex>
   );
 };
+
+export default Tweets;

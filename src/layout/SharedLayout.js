@@ -5,6 +5,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@chakra-ui/react";
+import { Suspense } from "react";
 
 export const SharedLayout = () => {
   return (
@@ -28,7 +29,9 @@ export const SharedLayout = () => {
           </BreadcrumbItem>
         </Breadcrumb>
       </Box>
-      <Outlet />
+      <Suspense>
+        <Outlet fallback />
+      </Suspense>
     </>
   );
 };
