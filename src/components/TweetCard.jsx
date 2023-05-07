@@ -14,6 +14,7 @@ import { decreaseNumber, increaseNumber } from "utils";
 import { PhotoFrame } from "components/CustomStyledComponents/PhotoFrame";
 import { CustomLine } from "components/CustomStyledComponents/CustomLine";
 import { ReactComponent as Logo } from "svg/logo.svg";
+import cardBgImage from "images/cardBgImage.png";
 
 export function TweetCard({ user, page, filter }) {
   const { followers, tweets, avatar, isFollowing } = user;
@@ -60,11 +61,7 @@ export function TweetCard({ user, page, filter }) {
           <Box pos="absolute" top="20px" left="20px">
             <Logo />
           </Box>
-          <Box
-            bgImage="url('./img/cardbgImage.png')"
-            width="308px"
-            height="168px"
-          />
+          <Box bgImage={`url(${cardBgImage})`} width="308px" height="168px" />
           <Flex mb="26px">
             <CustomLine />
             <PhotoFrame>
