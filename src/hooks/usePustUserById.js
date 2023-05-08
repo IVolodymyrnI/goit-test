@@ -9,7 +9,7 @@ export const usePutUserById = ({ page, filter }) => {
     onMutate: async ({ body: newData }) => {
       await queryClient.cancelQueries(["users", { page, filter }]);
 
-			const previousUsers = queryClient.getQueryData([
+      const previousUsers = queryClient.getQueryData([
         "users",
         { page, filter },
       ]);
@@ -26,6 +26,10 @@ export const usePutUserById = ({ page, filter }) => {
         ["users", { filter, page }],
         context.previousUsers
       );
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries(["users", { page, filter }]);
     },
   });
 };
