@@ -2,9 +2,9 @@
 
 This is a sample project created for testing purposes as part of the GoIT curriculum. The purpose of this project is to demonstrate basic knowledge and understanding of web development concepts, including HTML, CSS, and JavaScript.
 
-## Getting Started
+### Functionality
 
-To get started with this project, simply click on link [open](https://ivolodymyrni.github.io/goit-test).
+A two-page web site where, on the tweets page, you can load users' tweets, check their cards, and follow them if you want. Also, it is possible to sort them by status: all, follow, following. There is an ability to load more users by clicking on 'Load More' button.
 
 ### Built With
 
@@ -20,13 +20,13 @@ Technologies:
 
 - JavaScript
 - HTML
-- CSS4
+- CSS
 - REST API
 
 Services:
 
 - mockAPI
 
-### Functionality
+## Getting Started
 
-A two-page web site where, on the tweets page, you can load users' tweets, check their cards, and follow them if you want. Also, it is possible to sort them by status: all, follow, following. There is an ability to load more users by clicking on 'Load More' button.
+To get started with this project, simply click on link [open](https://ivolodymyrni.github.io/goit-test).
