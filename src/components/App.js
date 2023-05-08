@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 
 import { SharedLayout } from "layout/SharedLayout";
 
-const Tweets = lazy(() => import("pages/Tweets"));
 const Home = lazy(() => import("pages/Home"));
+const Tweets = lazy(() => import("pages/Tweets"));
 
 function App() {
   return (

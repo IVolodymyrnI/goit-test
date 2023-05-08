@@ -29,8 +29,8 @@ export const SharedLayout = () => {
           </BreadcrumbItem>
         </Breadcrumb>
       </Box>
-      <Suspense>
-        <Outlet fallback />
+      <Suspense fallback>
+        <Outlet />
       </Suspense>
     </>
   );
