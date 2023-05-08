@@ -5,50 +5,46 @@ import { useGetUsers } from "hooks";
 import { FILTER } from "constants";
 import { TweetsList } from "components/TweetsList";
 import { FilterByStatus } from "components/FilterByStatus";
-import { PaginationTweets } from "components/PaginationTweets";
-import { load, save } from "utils";
+import { LoadMoreButton } from "components/LoadMoreButton";
+import { unifyUsers } from "utils/unifyUsers";
+import { BackButton } from "components/BackButton";
 
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 
 const Tweets = () => {
-  const [page, setPage] = useState(() => load("page") || 1);
-  const [filter, setFilter] = useState(() => load("filter") || ALL);
-  const { data: users = [], isFetching } = useGetUsers({ page, filter });
-  const ref = useRef(filter);
+  const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState(ALL);
+  const { data = [], isFetching, isSuccess } = useGetUsers({ page, filter });
+  const [users = [], setUsers] = useState([]);
+  const ref = useRef({ filter, page });
 
   useEffect(() => {
-    save("filter", filter);
-
-    // When the page is changed, setPage doesn't set "1" as a value, only if the filter is changed.
-    if (ref.current !== filter) {
-      ref.current = filter;
-      setPage(1);
+    if (page === 1) {
+      setUsers(data);
     }
+
+    setUsers((state) => {
+      return unifyUsers({
+        key: "id",
+        arrays: [state, data],
+      });
+    });
+  }, [data, filter, page]);
+
+  useEffect(() => {
+    setPage(1);
   }, [filter]);
 
-  useEffect(() => {
-    save("page", page);
-  }, [page]);
-
-  const onPagination = (e) => {
-    const buttonName = e.target.name;
-
-    switch (buttonName) {
-      case "next":
-        setPage((state) => state + 1);
-        break;
-      case "prev":
-        setPage((state) => state - 1);
-        break;
-      default:
-        setPage(1);
-    }
+  const onPagination = () => {
+    setPage((state) => state + 1);
+    ref.current.page = page;
   };
 
-  const onFilter = (e) => {
-    const buttonName = e.target.name;
+  const onFilter = ({ target }) => {
+    const value = target.value;
+    ref.current.filter = filter;
 
-    switch (buttonName) {
+    switch (value) {
       case FOLLOW:
         setFilter(FOLLOW);
         break;
@@ -60,11 +56,11 @@ const Tweets = () => {
     }
   };
 
-  const paginationProps = {
+  const loadMoreProps = {
     onPagination,
-    page,
-    users,
     isFetching,
+    data,
+    isSuccess,
   };
 
   const tweetsListProps = {
@@ -82,9 +78,10 @@ const Tweets = () => {
 
   return (
     <Flex flexDir="column" justify="center" align="center">
+      <BackButton />
       <FilterByStatus props={filterProps}></FilterByStatus>
       <TweetsList props={tweetsListProps} />
-      <PaginationTweets props={paginationProps} />
+      <LoadMoreButton props={loadMoreProps} />
     </Flex>
   );
 };

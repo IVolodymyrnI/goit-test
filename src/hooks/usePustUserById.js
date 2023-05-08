@@ -8,13 +8,14 @@ export const usePutUserById = ({ page, filter }) => {
   return useMutation(putUserById, {
     onMutate: async ({ body: newData }) => {
       await queryClient.cancelQueries(["users", { page, filter }]);
-      const previousUsers = queryClient.getQueryData([
+
+			const previousUsers = queryClient.getQueryData([
         "users",
         { page, filter },
       ]);
 
       queryClient.setQueryData(["users", { page, filter }], (oldData) => {
-        return oldData.map((user) => (newData.id === user.id ? newData : user));
+        return [...oldData, newData];
       });
 
       return { previousUsers, newData };
@@ -26,9 +27,5 @@ export const usePutUserById = ({ page, filter }) => {
         context.previousUsers
       );
     },
-
-    // onSettled: () => {
-    //   queryClient.invalidateQueries(["users", { page, filter }]);
-    // },
   });
 };

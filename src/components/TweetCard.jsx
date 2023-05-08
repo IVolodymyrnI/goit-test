@@ -17,7 +17,7 @@ import { ReactComponent as Logo } from "svg/logo.svg";
 import cardBgImage from "images/cardBgImage.png";
 
 export function TweetCard({ user, page, filter }) {
-  const { followers, tweets, avatar, isFollowing } = user;
+	const { followers, tweets, avatar, isFollowing } = user;
   const { mutate: putUserById, isLoading: isPutting } = usePutUserById({
     page,
     filter,
