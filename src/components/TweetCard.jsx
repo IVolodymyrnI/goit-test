@@ -15,13 +15,21 @@ import { PhotoFrame } from "components/CustomStyledComponents/PhotoFrame";
 import { CustomLine } from "components/CustomStyledComponents/CustomLine";
 import { ReactComponent as Logo } from "svg/logo.svg";
 import cardBgImage from "images/cardBgImage.png";
+import { useEffect } from "react";
 
-export function TweetCard({ user, page, filter }) {
-	const { followers, tweets, avatar, isFollowing } = user;
-  const { mutate: putUserById, isLoading: isPutting } = usePutUserById({
-    page,
-    filter,
-  });
+export function TweetCard({ user, onFollow }) {
+  const { followers, tweets, avatar, isFollowing } = user;
+  const {
+    mutate: putUserById,
+    isLoading: isPutting,
+    data: updatedUser,
+  } = usePutUserById();
+
+  useEffect(() => {
+    if (updatedUser) {
+      onFollow(updatedUser);
+    }
+  }, [onFollow, updatedUser]);
 
   const onClick = (user) => {
     const { isFollowing, id } = user;
@@ -30,7 +38,6 @@ export function TweetCard({ user, page, filter }) {
       putUserById({
         id,
         body: {
-          ...user,
           followers: decreaseNumber({ baseNum: followers, toSubtract: 1 }),
           isFollowing: false,
         },
@@ -41,7 +48,6 @@ export function TweetCard({ user, page, filter }) {
     putUserById({
       id,
       body: {
-        ...user,
         followers: increaseNumber({ baseNum: followers, toAdd: 1 }),
         isFollowing: true,
       },

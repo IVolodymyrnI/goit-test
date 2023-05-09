@@ -6,12 +6,12 @@ const instance = axios.create({
   baseURL: "https://6454b79ba74f994b3346ffc7.mockapi.io",
 });
 
-export const getUsers = async ({ page, filter }) => {
+export const getUsers = async ({ page, filter, limit = PER_PAGE }) => {
   const filterInBoolean = filterToBoolean(filter);
 
   try {
     const response = await instance.get("/users", {
-      params: { page, limit: PER_PAGE, isFollowing: filterInBoolean },
+      params: { page, limit, isFollowing: filterInBoolean },
     });
 
     return response.data;
