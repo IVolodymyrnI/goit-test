@@ -7,12 +7,13 @@ import { TweetsList } from "components/TweetsList";
 import { FilterByStatus } from "components/FilterByStatus";
 import { LoadMoreButton } from "components/LoadMoreButton";
 import { BackButton } from "components/BackButton";
+import { load, save } from "utils";
 
 const { ALL, FOLLOW, FOLLOWING } = FILTER;
 
 const Tweets = () => {
   const [page, setPage] = useState(1);
-  const [filter, setFilter] = useState(ALL);
+  const [filter, setFilter] = useState(() => load("filter") || ALL);
   const { data = [], isFetching, isSuccess } = useGetUsers({ page, filter });
   const [users = [], setUsers] = useState([]);
   const [updatedUser, setUpdatedUser] = useState();
@@ -44,6 +45,7 @@ const Tweets = () => {
   const onFilter = ({ target }) => {
     const value = target.value;
     setPage(1);
+    save("filter", value);
 
     switch (value) {
       case FOLLOW:
@@ -64,13 +66,16 @@ const Tweets = () => {
     isSuccess,
   };
 
+  const filterProps = {
+    onChange: onFilter,
+    isFetching,
+    filter,
+  };
+
   return (
     <Flex flexDir="column" justify="center" align="center">
       <BackButton />
-      <FilterByStatus
-        onChange={onFilter}
-        isFetching={isFetching}
-      ></FilterByStatus>
+      <FilterByStatus props={filterProps}></FilterByStatus>
       <TweetsList users={users} onFollow={onFollow} />
       <LoadMoreButton props={loadMoreProps} />
     </Flex>
